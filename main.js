@@ -104,19 +104,68 @@ for (let i = 0; i < text2.length; i++) {
 //                                                Home Work
 //                                              OKTEN-HW-5-JS
 //======================================================================================================================
-// Візьміть файл template1.html, підключіть до нього скрипт, і працюйте в ньому!
-//
-//     - Напишіть код,  який за допомоги document.getElementById або document.getElementsByClassName або document.getElementsByTagName :
+// - Напишіть код,  який за допомоги document.getElementById або document.getElementsByClassName або document.getElementsByTagName :
 // -- отримує текст з параграфа з id "content"
-// -- отримує текст з блоку з id "rules"
-// -- замініть текст параграфа з id 'content' на будь-який інший
-// -- замініть текст параграфа з id 'rules' на будь-який інший
-// -- змініть кожному елементу колір фону на червоний
-// -- змініть кожному елементу колір тексту на синій
-// -- отримати весь список класів елемента з id=rules і вивести їх в console.log
-// -- отримати всі елементи з класом fc_rules. визначити їм 2 події "клік", одна вивдоить текст елементу, інша довільний ьексь
-// -- поміняти колір тексту у всіх елементів fc_rules на червоний
+let textIdContent = document.getElementById('content').textContent;
+    console.log("Text -> ", textIdContent);
 
+// -- отримує текст з блоку з id "rules"
+let textIdRules = document.getElementById('rules').textContent;
+    console.log('Text -> ', textIdRules);
+
+// -- замініть текст параграфа з id 'content' на будь-який інший
+let textIdContent2 = document.getElementById('content').textContent = 'Dec - 2021';
+    console.log('Tекст параграфа з id "content" -> ', textIdContent2);
+
+// -- замініть текст параграфа з id 'rules' на будь-який інший
+let textIdRules2 = document.getElementById('rules').textContent = 'Dec- 2021';
+    console.log('Tекст параграфа з id "rules" -> ', textIdRules2);
+
+// -- змініть кожному елементу колір фону на червоний
+let backgroundColor = document.getElementById('hw');
+    backgroundColor.style.backgroundColor = 'red';
+
+// -- змініть кожному елементу колір тексту на синій
+let textColorBlue = document.getElementById('hw');
+    textColorBlue.style.color = 'blue';
+
+// -- отримати весь список класів елемента з id=rules і вивести їх в console.log
+let allClassIdRules = document.querySelectorAll('#rules');
+for (let i = 0; i < allClassIdRules.length; i++) {
+    let element = allClassIdRules[i];
+    let classList = element.classList;
+    for (let j = 0; j < classList.length; j++) {
+        let classList2 = classList[j];
+        console.log('Class -> ', classList2);
+    };
+};
+
+// -- отримати всі елементи з класом fc_rules. визначити їм 2 події "клік", одна вивдоить текст елементу, інша довільний якийсь
+let elemClassFcRules = document.querySelectorAll('.fc_rules');
+for (let i = 0; i < elemClassFcRules.length; i++) {
+    let element = elemClassFcRules[i];
+    element.addEventListener('click', function (e) {
+        console.log('Tекст елементу по якому клікнули -> ', e.target.textContent);
+    });
+    element.addEventListener('click', function (e) {
+        let text = e.target;
+        let red = Math.floor(Math.random()*250);
+        let green = Math.floor(Math.random()*250);
+        let blue = Math.floor(Math.random()*250);
+        text.style.color = `rgb(${red},${green},${blue})`;
+    });
+};
+
+// -- поміняти колір тексту у всіх елементів fc_rules на червоний
+let elemClassFcRulesColorText = document.querySelectorAll('.fc_rules');
+for (let i = 0; i < elemClassFcRulesColorText.length; i++) {
+    let element = elemClassFcRulesColorText[i];
+    let red = Math.floor(Math.random()*250);
+    let green = Math.floor(Math.random()*250);
+    let blue = Math.floor(Math.random()*250);
+    element.style.color = `rgb(${red},${green},${blue})`;
+    // element.style.color = 'red';
+};
 
 //======================================================================================================================
 //                                             Additional Work
