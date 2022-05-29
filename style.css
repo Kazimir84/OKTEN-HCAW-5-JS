@@ -10,3 +10,17 @@ body {
     box-sizing: border-box;
 
 }
+#itemForm {
+    margin: 20px;
+    border: 1px solid;
+    display: table-caption;
+}
+img {
+    width: 173px;
+}
+a {
+    margin: 0px 15px;
+}
+#idFormSendItem {
+    margin: 5px 70px;
+}

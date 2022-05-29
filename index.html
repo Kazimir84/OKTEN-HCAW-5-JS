@@ -77,44 +77,30 @@ OKTEN-HCAW-5-JS
 <div style="text-align: center"><b>Additional Work</b></div>
 <div style="text-align: center"><b>OKTEN-AC-5-JS</b></div>
 
-<div id="contentAW"></div>
-<h1>Правила бойцовского клуба</h1>
-<div id="wrap">
-    <div class="rules rule1">
-        <h2>Первое правило Бойцовского клуба.</h2>
-        <p>Никому не рассказывать о Бойцовском клубе.</p>
-    </div>
-    <div class="rules rule2">
-        <h2>Второе правило Бойцовского клуба.</h2>
-        <p>Никогда никому не рассказывать о Бойцовском клубе.</p>
-    </div>
-    <div class="rules rule3">
-        <h2>Третье правило Бойцовского клуба.</h2>
-        <p>В схватке участвуют только двое.</p>
-    </div>
-    <div class="rules rule4">
-        <h2>Четвертое правило Бойцовского клуба.</h2>
-        <p>Не более одного поединка за один раз.</p>
-    </div>
+<form action="index2.html" method="get" name="formName">
+    <section> Enter Your Name
+    <input type="text" name="inputName" id="inputName" placeholder="name">
+    <button type="submit">Send</button>
+    </section>
+</form>
 
-    <div class="rules rule5">
-        <h2>Пятое правило Бойцовского клуба.</h2>
-        <p>Бойцы сражаются без обуви и голые по пояс.</p>
-    </div>
-    <div class="rules rule6">
-        <h2>Шестое правило Бойцовского клуба.</h2>
-        <p>Поединок продолжается столько, сколько потребуется.</p>
-    </div>
-    <div class="rules rule7">
-        <h2>Седьмое правило Бойцовского клуба.</h2>
-        <p>Если противник потерял сознание или делает вид, что потерял, или говорит «Хватит» — поединок
-            окончен.</p>
-    </div>
-    <div class="rules rule8">
-        <h2>Восьмое и последнее правило Бойцовского клуба.</h2>
-        <p>Новичок обязан принять бой.</p>
-    </div>
-</div>
+<form action="#" method="get" name="formStore" id="itemForm">
+    <section>Назва товару:
+        <input type="text" name="itemName" id="itemName" placeholder="Назва товару" value="">
+    </section>
+    <section>Кількість товару:
+        <input type="text" name="itemCount" id="itemCount" placeholder="Кількість товару">
+    </section>
+    <section>Ціна товару:
+        <input type="text" name="itemPrice" id="itemPrice" placeholder="Ціна товару">
+    </section>
+    <section>Зображення товару:
+        <img src="https://ru.wikipedia.org/wiki/.jpg" alt="logo" name="itemImg">
+    </section>
+    <a href='list.html'>На сторінку товарів</a>
+    <button type="submit" id="idFormSendItem">Send</button>
+</form>
+
 <!--=================================================================================================================-->
 <script src="main.js"></script>
 </body>
