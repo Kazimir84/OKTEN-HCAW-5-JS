@@ -17,6 +17,8 @@ body {
 }
 img {
     width: 173px;
+    /*height: 173px;*/
+    /*margin: 0 50px;*/
 }
 a {
     margin: 0px 15px;

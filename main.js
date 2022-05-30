@@ -186,7 +186,7 @@ localStorage.setItem(localKey, JSON.stringify([]));
         localStorage.setItem(localKey, JSON.stringify(name));
         // event.preventDefault();
     });
-
+// =====================================================================================================================
 // - Імітуємо наповнення інтернет магазину товарами :
 //     Створити форму з наступними полями :
 // - назва товару
@@ -201,7 +201,6 @@ localStorage.setItem(localKey, JSON.stringify([]));
 let itemForm = document.forms['formStore'];
 let itemStoreKey = 'items';
 
-
 localStorage.setItem(itemStoreKey, JSON.stringify([]));
 
 let img = itemForm['itemImg'];
@@ -215,7 +214,7 @@ function text(e) {
             img.src = 'https://tagilhleb.ru/upload/iblock/515/515831aec3fa50047741c68b170541ac.png';
             break;
         case 'Salt':
-            img.src = 'https://www.rossalt.ru/files/images/catalog_19a64d250147fd21aa5d5198dd7371d2.png';
+            img.src = 'https://pictures.grocerapps.com/original/grocerapp-national-iodized-salt-5ea2893524d20.jpeg';
             break;
         case 'Fish':
             img.src = 'http://povarixa.ru/images/photos/small/article4219.jpg';
@@ -226,40 +225,22 @@ function text(e) {
         case 'Cookie':
             img.src = 'https://www.wholesomeyum.com/wp-content/uploads/2017/02/wholesomeyum-the-best-low-carb-keto-chocolate-chip-cookies-recipe-with-almond-flour-12.jpg';
             break;
+        case 'Butter':
+            img.src = 'https://i5.walmartimages.com/asr/82da7f0c-88ff-4388-a1e3-63e0423d1dda_3.92a21757dff839bae449e09a39d32173.jpeg';
+            break;
+        case 'Juice':
+            img.src = 'https://cordis.europa.eu/docs/results/images/2020-02/415400.jpg';
+            break;
         default:
             img.alt = 'Picture not found';
     };
 };
 
 
-
 itemForm.addEventListener('submit', e => {
     let inputItemName = itemForm['itemName'].value;
     let inputItemCount = itemForm['itemCount'].value;
     let inputItemPrice = itemForm['itemPrice'].value;
-    // let img = itemForm['itemImg'];
-
-    // let nameToUpper = (inputItemName.split('')[0].toUpperCase() + inputItemName.slice(1, inputItemName.length));
-
-    // switch (nameToUpper) {
-    //     case 'Bread':
-    //         img.src = 'https://tagilhleb.ru/upload/iblock/515/515831aec3fa50047741c68b170541ac.png';
-    //         break;
-    //     case 'Salt':
-    //         img.src = 'https://www.rossalt.ru/files/images/catalog_19a64d250147fd21aa5d5198dd7371d2.png';
-    //         break;
-    //     case 'Fish':
-    //         img.src = 'http://povarixa.ru/images/photos/small/article4219.jpg';
-    //         break;
-    //     case 'Milk':
-    //         img.src = 'https://roscontrol.com/wp-content/uploads/2021/09/e7b17f6a38a36f3af2d7.jpg';
-    //         break;
-    //     case 'Cookie':
-    //         img.src = 'https://www.wholesomeyum.com/wp-content/uploads/2017/02/wholesomeyum-the-best-low-carb-keto-chocolate-chip-cookies-recipe-with-almond-flour-12.jpg';
-    //         break;
-    //     default:
-    //         img.alt = 'Picture not found';
-    // }
 
     let img = itemForm['itemImg'];
 
@@ -277,16 +258,138 @@ itemForm.addEventListener('submit', e => {
         localStorage.setItem(itemStoreKey, JSON.stringify(items));
     e.preventDefault();
 })
-
-
+// =====================================================================================================================
+let users = [{
+    name: 'vasya',
+    age: 31,
+    status: false,
+    address: {city: 'Lviv', country: 'Ukraine', street: 'Shevchenko', houseNumber: 1}
+}, {
+    name: 'petya',
+    age: 30,
+    status: true,
+    address: {city: 'New York', country: 'USA', street: 'East str', houseNumber: 21}
+}, {
+    name: 'kolya',
+    age: 29,
+    status: true,
+    address: {city: 'Budapest', country: 'Hungary', street: 'Kuraku', houseNumber: 78}
+}, {
+    name: 'olya',
+    age: 28,
+    status: false,
+    address: {city: 'Prague', country: 'Czech', street: 'Paster', houseNumber: 56}
+}, {
+    name: 'max',
+    age: 30,
+    status: true,
+    address: {city: 'Istanbul', country: 'Turkey', street: 'Mikar', houseNumber: 39}
+}, {
+    name: 'anya',
+    age: 31,
+    status: false,
+    address: {city: 'Rio', country: 'Brasil', street: 'Ronaldi', houseNumber: 5}
+}, {
+    name: 'oleg',
+    age: 28,
+    status: false,
+    address: {city: 'Montreal', country: 'Canada', street: 'Acusto', houseNumber: 90}
+}, {
+    name: 'andrey',
+    age: 29,
+    status: true,
+    address: {city: 'Quebeck', country: 'Canada', street: 'Binaro', houseNumber: 33}
+}, {
+    name: 'masha',
+    age: 30,
+    status: true,
+    address: {city: 'Moscow', country: 'Russia', street: 'Gogolia', houseNumber: 1}
+}, {
+    name: 'olya',
+    age: 31,
+    status: false,
+    address: {city: 'Portland', country: 'USA', street: 'Forest str', houseNumber: 4}
+}, {
+    name: 'max',
+    age: 31,
+    status: true,
+    address: {city: 'Cairo', country: 'Egypt', street: 'Seashore', houseNumber: 45}
+}];
 // - З масиву users за допомогою циклу витягнути адреси користувачів і записати (скопіювати) їх в інший порожній масив.
-// - За допомоги циклу проітерувати  масив users, записати кожного юзера в сівй блок за допомоги document.createElement.
+let usersAddress = [];
+for (let i = 0; i < users.length; i++) {
+    let user = users[i];
+    usersAddress.push(user.address);
+};
+console.log('Users Address : ', usersAddress);
+
+// - За допомоги циклу проітерувати  масив users, записати кожного юзера в свій блок за допомоги document.createElement.
+let ol = document.createElement('ol');
+    ol.style.marginLeft = '20px'
+document.body.append(ol);
+for (let i = 0; i < users.length; i++) {
+    let user = users[i];
+    let li = document.createElement('li');
+    for (let userKey in user) {
+        li.append(`${userKey}: ${user[userKey]}, `);
+        for (let userKeyKey in user.address) {
+            li.append(`${userKeyKey}: ${user.address[userKeyKey]}, `);
+        };
+    };
+    ol.append(li);
+};
+console.log('Users', users);
+
 //      Всі данні в одному блоці.
 // - За допомоги циклу проітерувати  масив users, записати кожного юзера в сівй блок за допомоги document.createElement,
 //      розділивши всі властивості по своїм блокам (div>div*4)
+let div = document.createElement('div');
+document.body.append(div);
+
+for (let i = 0; i < users.length; i++) {
+    let div1 = document.createElement('div');
+    let user = users[i];
+    for (let userKey in user) {
+        let div2 = document.createElement('div');
+        div2.append(`${userKey}: ${user[userKey]}; `);
+        div1.append(div2);
+        if (typeof user[userKey] === "object") {
+            let div3 = document.createElement('div');
+            for (let userKey1 in user[userKey]) {
+                div3.append(`${userKey1}: ${user[userKey][userKey1]}; `);
+                div1.append(div3);
+                div.append(div1);
+            };
+        };
+    };
+};
+
 // - За допомоги циклу проітерувати  масив users, записати кожного юзера в сівй блок за допомоги document.createElement,
 //      розділивши всі властивості по своїм блокам , блок з адресою зробити окремим блоком, з блоками для кожної властивості
-//
+for (let i = 0; i < users.length; i++) {
+    let divN = document.createElement('div');
+        divN.innerText = 'User: ';
+    let user = users[i];
+
+    for (let userKey in user) {
+        if (userKey !== 'address') {
+            let divUser = document.createElement('div');
+            divUser.append(`${userKey}: ${user[userKey]}`);
+            divN.append(divUser);
+        };
+    };
+    let addr = document.createElement('div');
+        addr.innerText = 'Address: ';
+    divN.append(addr);
+    for (let addressKey in user.address) {
+            let divAddr = document.createElement('div');
+            divAddr.append(`${addressKey}: ${user.address[addressKey]}`);
+            addr.append(divAddr);
+    };
+    document.body.append(divN);
+    document.write(`<hr>`);
+};
+
 // let users = [{
 //     name: 'vasya',
 //     age: 31,
@@ -343,9 +446,9 @@ itemForm.addEventListener('submit', e => {
 //     status: true,
 //     address: {city: 'Cairo', country: 'Egypt', street: 'Seashore', houseNumber: 45}
 // }];
-//
-//
-//
+
+
+//======================================================================================================================
 // - є сторінка rules.html. Контентом сторінки є заголовки та параграфи. Заголовки (h2) характеризують тему контенту яка вказана в параграфі.
 //     створити скріпт, котрий зчитує всі заголовки, та робить в блоці з id=content з них список(ul>li), який буде змістом того, що знаходиться на сторінці.
 //     Скріпт повинен працювати навіть якщо кількість блоків з заголовком та параграфом зміниться.
