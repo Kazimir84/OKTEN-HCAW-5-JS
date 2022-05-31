@@ -331,10 +331,12 @@ for (let i = 0; i < users.length; i++) {
     let user = users[i];
     let li = document.createElement('li');
     for (let userKey in user) {
-        li.append(`${userKey}: ${user[userKey]}, `);
-        for (let userKeyKey in user.address) {
-            li.append(`${userKeyKey}: ${user.address[userKeyKey]}, `);
-        };
+        if (userKey !== 'address') {
+            li.append(`${userKey}: ${user[userKey]}, `);
+            for (let userKeyKey in user.address) {
+                li.append(`${userKeyKey}: ${user.address[userKeyKey]}, `);
+            };
+        }
     };
     ol.append(li);
 };
@@ -350,9 +352,11 @@ for (let i = 0; i < users.length; i++) {
     let div1 = document.createElement('div');
     let user = users[i];
     for (let userKey in user) {
-        let div2 = document.createElement('div');
-        div2.append(`${userKey}: ${user[userKey]}; `);
-        div1.append(div2);
+        if (userKey !== 'address') {
+            let div2 = document.createElement('div');
+            div2.append(`${userKey}: ${user[userKey]}; `);
+            div1.append(div2);
+        };
         if (typeof user[userKey] === "object") {
             let div3 = document.createElement('div');
             for (let userKey1 in user[userKey]) {
@@ -452,46 +456,74 @@ for (let i = 0; i < users.length; i++) {
 // - є сторінка rules.html. Контентом сторінки є заголовки та параграфи. Заголовки (h2) характеризують тему контенту яка вказана в параграфі.
 //     створити скріпт, котрий зчитує всі заголовки, та робить в блоці з id=content з них список(ul>li), який буде змістом того, що знаходиться на сторінці.
 //     Скріпт повинен працювати навіть якщо кількість блоків з заголовком та параграфом зміниться.
-//
-// -Є масив котрий характеризує правила. Створити скрипт який ітерує цей масив, та робить з кожне правило в окремому блоці.
-//     При цому в блоці, номер правила записати в свій блок, текст правила записати в свій окремий блок.
+let h2 = document.querySelectorAll('h2');
+let content = document.getElementById('contentR');
+let ul = document.createElement('ul');
+    ul.style.marginLeft = '30px';
+content.append(ul);
+
+for (let i = 0; i < h2.length; i++) {
+    let element = h2[i];
+    let li = document.createElement('li');
+        li.innerText = element.textContent;
+        ul.append(li);
+};
+
+//======================================================================================================================
+let rules = [
+    {
+        title: 'Первое правило Бойцовского клуба.',
+        body: 'Никому не рассказывать о Бойцовском клубе.'
+    },
+    {
+        title: 'Второе правило Бойцовского клуба.',
+        body: 'Никогда никому не рассказывать о Бойцовском клубе.'
+    },
+    {
+        title: 'Третье правило Бойцовского клуба.',
+        body: 'В схватке участвуют только двое.'
+    },
+    {
+        title: 'Четвертое правило Бойцовского клуба.',
+        body: 'Не более одного поединка за один раз.'
+    },
+    {
+        title: 'Пятое правило Бойцовского клуба.',
+        body: 'Бойцы сражаются без обуви и голые по пояс.'
+    },
+    {
+        title: 'Шестое правило Бойцовского клуба.',
+        body: 'Поединок продолжается столько, сколько потребуется.'
+    },
+    {
+        title: 'Седьмое правило Бойцовского клуба.',
+        body: 'Если противник потерял сознание или делает вид, что потерял, или говорит «Хватит» — поединок окончен.'
+    },
+    {
+        title: 'Восьмое и последнее правило Бойцовского клуба.',
+        body: 'Новичок обязан принять бой.'
+    },
+
+];
+// -Є масив котрий характеризує правила.
+// Створити скрипт який ітерує цей масив, та робить кожне правило в окремому блоці.
+//     При цьому в блоці, номер правила записати в свій блок, текст правила записати в свій окремий блок.
 //     Результатом відпрацювання скріпта повинна бути структура яка міститься в блоці wrap файла rule.html
-//
-// let rules = [
-//     {
-//         title: 'Первое правило Бойцовского клуба.',
-//         body: 'Никому не рассказывать о Бойцовском клубе.'
-//     },
-//     {
-//         title: 'Второе правило Бойцовского клуба.',
-//         body: 'Никогда никому не рассказывать о Бойцовском клубе.'
-//     },
-//     {
-//         title: 'Третье правило Бойцовского клуба.',
-//         body: 'В схватке участвуют только двое.'
-//     },
-//     {
-//         title: 'Четвертое правило Бойцовского клуба.',
-//         body: 'Не более одного поединка за один раз.'
-//     },
-//     {
-//         title: 'Пятое правило Бойцовского клуба.',
-//         body: 'Бойцы сражаются без обуви и голые по пояс.'
-//     },
-//     {
-//         title: 'Шестое правило Бойцовского клуба.',
-//         body: 'Поединок продолжается столько, сколько потребуется.'
-//     },
-//     {
-//         title: 'Седьмое правило Бойцовского клуба.',
-//         body: 'Если противник потерял сознание или делает вид, что потерял, или говорит «Хватит» — поединок окончен.'
-//     },
-//     {
-//         title: 'Восьмое и последнее правило Бойцовского клуба.',
-//         body: 'Новичок обязан принять бой.'
-//     },
-//
-// ];
+let divWrap = document.createElement('div');
+    divWrap.className = 'wrap';
+document.body.append(divWrap);
 
-
+for (let i = 0; i < rules.length; i++) {
+    let rule = rules[i];
+    let divRule = document.createElement('div');
+        divRule.className = `rules rule${i+1}`;
+    for (let ruleKey in rule) {
+        let h2 = document.createElement('h2');
+            h2.innerText = `${rule.title}`;
+        let p = document.createElement('p');
+            p.innerText = `${rule.body}`;
+            divRule.append(h2, p);
+    }
+    divWrap.append(divRule);
+};
 //======================================================================================================================
